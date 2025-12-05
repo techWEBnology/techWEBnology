@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact | TechWebnology</title>
+<style>
+  :root {
+    --blue: #0052cc;
+    --yellow: #ffcc00;
+    --white: #ffffff;
+    --gray: #f5f7fb;
+    --dark: #20232a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+  body { background:var(--gray); color:#333; }
+
+  nav {
+    position:fixed; top:0; width:100%;
+    background:rgba(255,255,255,0.95); backdrop-filter:blur(12px);
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 8%; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  }
+  .logo { font-size:1.6rem; font-weight:700; color:var(--blue); }
+  .nav-links a {
+    text-decoration:none; color:#333; margin-left:30px; font-weight:500; transition:color 0.3s;
+  }
+  .nav-links a:hover { color:var(--blue); }
+
+  .page-hero {
+    padding:130px 8% 40px;
+    background:linear-gradient(135deg,#ffffff 0%,#eef2ff 35%,#dff1ff 100%);
+    text-align:left;
+  }
+  .page-hero h1 {
+    font-size:2.6rem; color:var(--dark); margin-bottom:10px;
+  }
+  .page-hero p {
+    max-width:520px; color:#555; line-height:1.7;
+  }
+  .highlight {
+    background:linear-gradient(90deg,var(--blue),var(--yellow));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+
+  .contact-wrapper {
+    padding:40px 8% 80px;
+    display:grid;
+    grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+    gap:30px;
+    max-width:1100px;
+    margin:0 auto;
+  }
+
+  .contact-card {
+    background:#ffffff;
+    border-radius:18px;
+    padding:28px 26px;
+    box-shadow:0 10px 30px rgba(9,30,66,0.06);
+    border:1px solid rgba(0,0,0,0.04);
+  }
+  .contact-card h2 {
+    font-size:1.4rem;
+    margin-bottom:8px;
+    color:var(--dark);
+  }
+  .contact-card p {
+    color:#666;
+    font-size:0.97rem;
+    margin-bottom:18px;
+  }
+
+  .field-row {
+    margin-bottom:14px;
+  }
+  label {
+    display:block;
+    font-size:0.85rem;
+    font-weight:500;
+    color:#555;
+    margin-bottom:4px;
+  }
+  input, textarea {
+    width:100%;
+    padding:10px 12px;
+    border-radius:10px;
+    border:1px solid #d0d4e4;
+    font-size:0.95rem;
+    outline:none;
+    transition:border-color 0.2s, box-shadow 0.2s;
+    background:#f9fafc;
+  }
+  input:focus, textarea:focus {
+    border-color:var(--blue);
+    box-shadow:0 0 0 3px rgba(0,82,204,0.15);
+    background:#ffffff;
+  }
+  textarea { min-height:130px; resize:vertical; }
+
+  .submit-btn {
+    margin-top:4px;
+    display:inline-block;
+    border:none;
+    background:var(--blue);
+    color:#fff;
+    padding:11px 26px;
+    border-radius:999px;
+    font-size:0.95rem;
+    font-weight:500;
+    cursor:pointer;
+    transition:background 0.25s,color 0.25s,transform 0.15s;
+  }
+  .submit-btn:hover {
+    background:var(--yellow);
+    color:var(--dark);
+    transform:translateY(-1px);
+  }
+
+  .status-message {
+    margin-top:10px;
+    font-size:0.9rem;
+  }
+
+  .info-card {
+    background:linear-gradient(135deg,#0b5fff 0%,#277dff 30%,#f9fbff 100%);
+    border-radius:18px;
+    padding:24px 22px;
+    color:#fff;
+    box-shadow:0 14px 36px rgba(9,30,66,0.25);
+  }
+  .info-card h3 {
+    font-size:1.2rem;
+    margin-bottom:10px;
+  }
+  .info-item {
+    font-size:0.95rem;
+    margin-bottom:10px;
+  }
+  .info-label {
+    opacity:0.85;
+    font-size:0.8rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+  }
+  .info-value {
+    font-weight:500;
+  }
+
+  footer {
+    background:#ffffff; text-align:center; padding:24px;
+    color:#555; border-top:1px solid #e5e5e5; margin-top:20px;
+  }
+
+  @media (max-width:900px){
+    .contact-wrapper { grid-template-columns:1fr; }
+    .info-card { order:-1; }
+    .page-hero { text-align:center; }
+    .page-hero p { margin:0 auto; }
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">TechWebnology</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <h1>Let’s <span class="highlight">build</span> something together</h1>
+    <p>Have an idea, project, or collaboration in mind? Send a message and TechWebnology will get back to you as soon as possible.</p>
+  </section>
+
+  <main class="contact-wrapper">
+    <section class="contact-card">
+      <h2>Send a message</h2>
+      <p>Tell a bit about your project, what you need, or just say hi. Deepak and Uday read every message themselves.</p>
+
+      <form id="contactForm">
+        <div class="field-row">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required />
+        </div>
+        <div class="field-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field-row">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Project, collab, question..." required />
+        </div>
+        <div class="field-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Share your idea, goals, or questions..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send message</button>
+        <div id="status" class="status-message"></div>
+      </form>
+    </section>
+
+    <aside class="info-card">
+      <h3>Contact details</h3>
+      <div class="info-item">
+        <div class="info-label">Email</div>
+        <div class="info-value">techwebnology.team@gmail.com</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Built by</div>
+        <div class="info-value">Deepak &amp; Uday · YoungTech I</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Best time to reply</div>
+        <div class="info-value">Evenings (IST) within 24 hours</div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    © 2025 TechWebnology · Innovation starts with curiosity
+  </footer>
+
+  <script>
+    // Simple front-end only handler (works on GitHub Pages).
+    // Later you can post this data to Firestore or a form service. [web:118][web:124]
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('status');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      statusEl.style.color = '#555';
+      statusEl.textContent = 'This demo form is not connected to a backend yet. You can add Firebase or Formspree later.';
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
