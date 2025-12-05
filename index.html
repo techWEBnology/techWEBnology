@@ -184,6 +184,7 @@
     <div class="logo">TechWebnology</div>
     <div class="nav-links">
       <a href="#">Home</a>
+      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
   </nav>
@@ -300,12 +301,12 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app); // Firestore client for reads as shown in docs. [web:22][web:36]
+    const db = getFirestore(app);
 
     const templateList = document.getElementById("templateList");
 
     const templatesRef = collection(db, "templates");
-    const templatesQuery = query(templatesRef, orderBy("createdAt", "desc")); // Simple ordered query. [web:34]
+    const templatesQuery = query(templatesRef, orderBy("createdAt", "desc"));
 
     onSnapshot(templatesQuery, (snapshot) => {
       if (snapshot.empty) {

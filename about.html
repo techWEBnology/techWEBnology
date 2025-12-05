@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About | TechWebnology</title>
+<style>
+  :root {
+    --blue: #0052cc;
+    --yellow: #ffcc00;
+    --white: #ffffff;
+    --gray: #f5f7fb;
+    --dark: #20232a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+  body { background:var(--gray); color:#333; }
+
+  nav {
+    position:fixed; top:0; width:100%;
+    background:rgba(255,255,255,0.95); backdrop-filter:blur(12px);
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 8%; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  }
+  .logo {
+    font-size:1.6rem; font-weight:700;
+    background:linear-gradient(90deg,#0064e5,#4f7f7b,#d6b500);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .nav-links a {
+    text-decoration:none; color:#333; margin-left:30px;
+    font-weight:500; transition:color 0.3s;
+  }
+  .nav-links a:hover { color:var(--blue); }
+
+  .hero {
+    padding:130px 8% 60px;
+    background:linear-gradient(135deg,#ffffff 0%,#eef2ff 35%,#dff1ff 100%);
+  }
+  .hero-tag {
+    font-size:0.8rem; text-transform:uppercase;
+    letter-spacing:0.16em; color:var(--blue); margin-bottom:8px;
+  }
+  .hero-inner {
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+    gap:32px;
+    align-items:center;
+  }
+  .hero-inner h1 {
+    font-size:2.8rem; color:var(--dark); margin-bottom:12px;
+  }
+  .hero-inner p {
+    color:#555; line-height:1.7; font-size:1rem;
+  }
+  .hero-stat {
+    background:#ffffff;
+    border-radius:18px;
+    padding:20px 22px;
+    box-shadow:0 10px 28px rgba(9,30,66,0.08);
+    border:1px solid rgba(0,0,0,0.04);
+  }
+  .hero-stat-row {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:10px;
+  }
+  .hero-stat-row strong {
+    font-size:1.1rem; color:var(--dark);
+  }
+  .badge-soft {
+    font-size:0.8rem;
+    padding:4px 10px;
+    border-radius:999px;
+    background:rgba(0,82,204,0.06);
+    color:var(--blue);
+  }
+  .hero-metrics {
+    display:flex; flex-wrap:wrap; gap:14px; margin-top:10px;
+  }
+  .metric {
+    flex:1 1 90px;
+    font-size:0.8rem;
+    padding:8px 10px;
+    border-radius:12px;
+    background:#f5f7ff;
+  }
+  .metric span {
+    display:block;
+    font-size:1.1rem;
+    font-weight:600;
+    color:var(--blue);
+  }
+
+  .section {
+    max-width:1100px;
+    margin:0 auto;
+    padding:40px 8% 0;
+  }
+  .section:last-of-type { padding-bottom:70px; }
+
+  .section-header {
+    margin-bottom:16px;
+  }
+  .section-eyebrow {
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:var(--blue);
+    margin-bottom:4px;
+  }
+  .section-title {
+    font-size:1.8rem;
+    color:var(--dark);
+  }
+  .section-sub {
+    font-size:0.96rem;
+    color:#555;
+    margin-top:4px;
+  }
+
+  .story-grid {
+    display:grid;
+    grid-template-columns:minmax(0,1.5fr) minmax(0,1.1fr);
+    gap:24px;
+  }
+  .card {
+    background:#ffffff;
+    border-radius:18px;
+    padding:22px 22px;
+    box-shadow:0 8px 24px rgba(9,30,66,0.06);
+    border:1px solid rgba(0,0,0,0.04);
+  }
+  .card p { font-size:0.95rem; color:#555; line-height:1.7; }
+
+  .pill-row {
+    margin-top:14px;
+    display:flex; flex-wrap:wrap;
+    gap:10px;
+  }
+  .pill {
+    font-size:0.85rem;
+    padding:7px 10px;
+    border-radius:999px;
+    background:#f5f7ff;
+    border:1px solid rgba(0,82,204,0.12);
+  }
+
+  .mv-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:18px;
+    margin-top:12px;
+  }
+  .mv-card-title {
+    font-size:1rem;
+    font-weight:600;
+    margin-bottom:6px;
+    color:var(--dark);
+  }
+  .mv-card p { font-size:0.9rem; }
+
+  .timeline {
+    margin-top:10px;
+    border-left:2px solid rgba(0,0,0,0.06);
+    padding-left:16px;
+  }
+  .timeline-item {
+    margin-bottom:14px;
+    position:relative;
+  }
+  .timeline-dot {
+    position:absolute;
+    left:-10px;
+    top:4px;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--blue);
+  }
+  .timeline-label {
+    font-size:0.8rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:#777;
+    margin-bottom:2px;
+  }
+  .timeline-title {
+    font-size:0.98rem;
+    font-weight:600;
+    color:var(--dark);
+  }
+  .timeline-text {
+    font-size:0.9rem;
+    color:#555;
+  }
+
+  .team-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+    margin-top:14px;
+  }
+  .member {
+    background:#ffffff;
+    border-radius:16px;
+    padding:16px 16px 14px;
+    box-shadow:0 6px 20px rgba(9,30,66,0.05);
+    border:1px solid rgba(0,0,0,0.04);
+  }
+  .member-name {
+    font-size:1rem;
+    font-weight:600;
+    margin-bottom:2px;
+    color:var(--dark);
+  }
+  .member-role {
+    font-size:0.86rem;
+    color:var(--blue);
+    margin-bottom:6px;
+  }
+  .member p {
+    font-size:0.88rem;
+    color:#555;
+    line-height:1.6;
+  }
+
+  footer {
+    background:#ffffff; text-align:center; padding:24px;
+    color:#555; border-top:1px solid #e5e5e5;
+  }
+
+  @media (max-width:900px){
+    .hero-inner { grid-template-columns:1fr; }
+    .section { padding-inline:6%; }
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">TechWebnology</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">About TechWebnology</div>
+    <div class="hero-inner">
+      <div>
+        <h1>Two teenagers, one studio, and a lot of curiosity.</h1>
+        <p>
+          TechWebnology is a small creative web studio run by Deepak and Uday — two 15‑year‑old builders
+          obsessed with clean design, sharp code, and ideas that feel a little bit futuristic.
+        </p>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-row">
+          <strong>Building the internet we wish we had as students.</strong>
+          <span class="badge-soft">YoungTech I Studio</span>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric">
+            <span>20+</span>
+            web templates crafted
+          </div>
+          <div class="metric">
+            <span>10+</span>
+            active projects
+          </div>
+          <div class="metric">
+            <span>5+</span>
+            core web technologies
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section">
+    <header class="section-header">
+      <div class="section-eyebrow">Our story</div>
+      <div class="section-title">From school notebooks to shipping real products</div>
+      <p class="section-sub">
+        TechWebnology started as a way to learn and quickly became a place to experiment with real‑world
+        ideas, templates, and tools for other creators like us.
+      </p>
+    </header>
+
+    <div class="story-grid">
+      <article class="card">
+        <p>
+          Like most students, we began with random HTML files and half‑finished projects.
+          But we kept noticing the same thing — our friends had awesome ideas and zero
+          access to well‑designed, easy‑to‑use web experiences.
+        </p>
+        <p>
+          TechWebnology was created to fix that. We treat every project like a mini‑product:
+          clear story, bold visuals, and fast code that actually loads on real devices,
+          not just in design tools.
+        </p>
+        <div class="pill-row">
+          <div class="pill">Design‑first layouts</div>
+          <div class="pill">Student & indie‑friendly</div>
+          <div class="pill">Built in India, for the world</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <p>
+          Today, TechWebnology powers YoungTech I templates, landing pages, experiments with AI,
+          and small tools that help other young developers show their work with pride.
+        </p>
+        <p>
+          The mission is simple: lower the friction between a crazy idea and a working link you
+          can share with the world.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- MISSION & VALUES -->
+  <section class="section">
+    <header class="section-header">
+      <div class="section-eyebrow">Mission & values</div>
+      <div class="section-title">What TechWebnology stands for</div>
+      <p class="section-sub">
+        Every decision — from color choices to code structure — follows a few rules that keep our work
+        honest, fast, and future‑ready.
+      </p>
+    </header>
+
+    <div class="mv-grid">
+      <article class="card mv-card">
+        <div class="mv-card-title">Mission</div>
+        <p>
+          Make professional‑feeling web experiences accessible to students, solo creators,
+          and small teams — without huge budgets or complicated tools.
+        </p>
+      </article>
+      <article class="card mv-card">
+        <div class="mv-card-title">Vision</div>
+        <p>
+          A world where a teenager with a laptop and a bold idea can launch something that looks
+          and feels as good as what big companies ship.
+        </p>
+      </article>
+      <article class="card mv-card">
+        <div class="mv-card-title">Values</div>
+        <p>
+          Design with empathy. Build with curiosity. Ship with honesty.
+          Stay lightweight, transparent, and always learning.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section">
+    <header class="section-header">
+      <div class="section-eyebrow">Journey so far</div>
+      <div class="section-title">Key milestones on our path</div>
+    </header>
+
+    <div class="card">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-label">2024 · Idea stage</div>
+          <div class="timeline-title">Two friends, one vision</div>
+          <p class="timeline-text">
+            Deepak and Uday start building small projects together after school — portfolio pages,
+            simple apps, and clones for practice.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-label">2024 · YoungTech I</div>
+          <div class="timeline-title">First public templates</div>
+          <p class="timeline-text">
+            The first batch of web templates is released under YoungTech I, giving other students
+            usable designs instead of starting from a blank page.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-label">2025 · TechWebnology</div>
+          <div class="timeline-title">Turning experiments into a studio</div>
+          <p class="timeline-text">
+            TechWebnology becomes the official studio name — a home for templates, custom builds,
+            and experiments with AI‑powered and Firebase‑backed projects.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-label">Next</div>
+          <div class="timeline-title">Helping more creators launch</div>
+          <p class="timeline-text">
+            The goal now is to ship more public tools, collaborate with students and startups,
+            and keep pushing the quality bar for indie projects.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section">
+    <header class="section-header">
+      <div class="section-eyebrow">The team</div>
+      <div class="section-title">Who you’ll actually work with</div>
+      <p class="section-sub">
+        No hidden agency, no layers of managers. Just two builders who care about doing
+        thoughtful work and learning from every project.
+      </p>
+    </header>
+
+    <div class="team-grid">
+      <article class="member">
+        <div class="member-name">Deepak</div>
+        <div class="member-role">Front‑end & interaction design</div>
+        <p>
+          Focused on how things look and feel: typography, color systems, layouts,
+          and smooth micro‑interactions that make a site fun to use.
+        </p>
+      </article>
+
+      <article class="member">
+        <div class="member-name">Uday</div>
+        <div class="member-role">Logic, structure & systems</div>
+        <p>
+          Loves turning messy ideas into clean architecture — from data structures and
+          Firebase flows to simple, reliable deployment setups.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 TechWebnology · Built by Deepak &amp; Uday · Innovation starts with curiosity
+  </footer>
+
+</body>
+</html>
