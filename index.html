@@ -27,12 +27,16 @@
   .nav-links a:hover { color:var(--blue); }
 
   .hero {
-    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
     padding:140px 8% 100px;
     background:linear-gradient(135deg,#ffffff 0%,#eef2ff 35%,#dff1ff 100%);
+    text-align:center;
   }
-  .hero-content { flex:1 1 450px; padding-right:20px; }
-  .hero h1 { font-size:3.8rem; line-height:1.1; color:var(--dark); }
+  .hero-content {
+    flex:1 1 450px;
+    max-width:650px;
+  }
+  .hero h1 { font-size:3.2rem; line-height:1.1; color:var(--dark); }
   .highlight {
     background:linear-gradient(90deg,var(--blue),var(--yellow));
     -webkit-background-clip:text; -webkit-text-fill-color:transparent;
@@ -44,11 +48,7 @@
     transition:0.3s;
   }
   .cta-btn:hover { background:var(--yellow); color:var(--dark); }
-  .hero-image { flex:1 1 420px; text-align:center; }
-  .hero-image img {
-    max-width:100%; border-radius:20px;
-    box-shadow:0 15px 30px rgba(0,0,0,0.08); transform:scale(1.03);
-  }
+  .hero-image { display:none; }
 
   .wave { width:100%; height:120px; background:var(--gray); border-radius:100% / 80px; margin-top:-60px; }
 
@@ -148,17 +148,32 @@
   .project-list {
     display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;
   }
+
   .project-card {
-    background:#ffffff; border-radius:14px;
+    background:#ffffff;
+    border-radius:14px;
     box-shadow:0 5px 15px rgba(0,0,0,0.05);
-    padding:18px 20px;
+    padding:0;
+    overflow:hidden;
     cursor:pointer;
     transition:transform 0.25s ease, box-shadow 0.25s ease;
+    max-width:420px;
+    margin:0 auto;
   }
   .project-card:hover {
     transform:translateY(-4px);
     box-shadow:0 12px 30px rgba(0,82,204,0.16);
   }
+  .project-thumb {
+    width:400px;
+    height:400px;
+    max-width:100%;
+    object-fit:cover;
+    display:block;
+    margin:0 auto;
+    background:#eee;
+  }
+  .project-info { padding:18px 20px; }
   .project-title { font-size:1.15rem; font-weight:600; color:var(--blue); margin-bottom:6px; }
   .project-meta { font-size:0.95rem; color:#555; }
 
@@ -169,7 +184,7 @@
 
   @media (max-width:900px){
     .hero{flex-direction:column;text-align:center;}
-    .hero h1{font-size:3rem;}
+    .hero h1{font-size:2.4rem;}
     .about-inner{grid-template-columns:1fr;text-align:center;}
     .about-highlights{justify-content:center;}
     .about-cards{max-width:380px;margin:0 auto;}
@@ -192,12 +207,9 @@
   <section class="hero">
     <div class="hero-content">
       <h1>Your Future Runs on <span class="highlight">TechWebnology</span></h1>
-      <p>We design, code, and innovate digital tools that inspire the next generation of creators.  
+      <p>We design, code, and innovate digital tools that inspire the next generation of creators.
       Building technology with imagination — that's our mission.</p>
       <a href="#projects" class="cta-btn">Explore Our Work</a>
-    </div>
-    <div class="hero-image">
-      <img src="images/hero-illustration.png" alt="Hero Illustration" />
     </div>
   </section>
 
@@ -209,7 +221,7 @@
         <span class="section-tag">Who We Are</span>
         <h2>Building tech with teenage ambition</h2>
         <p>
-          We are <strong>Deepak</strong> and <strong>Uday</strong> — two 15‑year‑old developers and designers turning curiosity into real products and experiences.
+          We are <strong>Deepak (15 years of age)</strong> and <strong>Uday (17 years of age)</strong> — two developers and designers turning curiosity into real products and experiences.
           TechWebnology is our playground for bold ideas, clean design, and web tools built for the next generation of creators.
         </p>
         <div class="about-highlights">
@@ -301,16 +313,16 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    const db = getFirestore(app); // [web:185]
 
     const templateList = document.getElementById("templateList");
-
     const templatesRef = collection(db, "templates");
     const templatesQuery = query(templatesRef, orderBy("createdAt", "desc"));
 
     onSnapshot(templatesQuery, (snapshot) => {
       if (snapshot.empty) {
-        templateList.innerHTML = "<p style='text-align:center;color:#777;'>Projects are coming soon — stay tuned!</p>";
+        templateList.innerHTML =
+          "<p style='text-align:center;color:#777;grid-column:1/-1;'>Projects are coming soon — stay tuned!</p>";
         return;
       }
 
@@ -319,10 +331,15 @@
         const safeName = t.name || "Untitled";
         const safeLink = t.link || "#";
         const tmplNo = t.templateNo || "-";
+        const safeImage = t.imageUrl || "https://via.placeholder.com/400x400?text=No+Image";
+
         return `
           <div class="project-card" onclick="window.open('${safeLink}','_blank')">
-            <div class="project-title">${safeName}</div>
-            <div class="project-meta">Chk the template no: ${tmplNo}</div>
+            <img src="${safeImage}" class="project-thumb" alt="${safeName}" loading="lazy">
+            <div class="project-info">
+              <div class="project-title">${safeName}</div>
+              <div class="project-meta">Chk the template no: ${tmplNo}</div>
+            </div>
           </div>
         `;
       }).join("");
@@ -330,7 +347,8 @@
       templateList.innerHTML = html;
     }, (error) => {
       console.error("Error loading templates:", error);
-      templateList.innerHTML = "<p style='text-align:center;color:#e84118;'>Failed to load projects.</p>";
+      templateList.innerHTML =
+        "<p style='text-align:center;color:#e84118;'>Failed to load projects.</p>";
     });
   </script>
 
