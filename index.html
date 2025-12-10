@@ -4,11 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TechWebnology | YoungTech I</title>
-<!-- Font Awesome -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
   :root {
-    /* Light Mode Variables */
     --primary: #0052cc;
     --accent: #ffcc00;
     --bg-body: #f5f7fb;
@@ -21,8 +21,6 @@
     --skeleton-base: #e0e0e0;
     --skeleton-highlight: #f5f5f5;
   }
-
-  /* Dark Mode Variables */
   [data-theme="dark"] {
     --primary: #4c8bf5;
     --accent: #ffcc00;
@@ -40,7 +38,6 @@
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
   body { background:var(--bg-body); color:var(--text-main); overflow-x:hidden; transition: background 0.3s, color 0.3s; }
 
-  /* --- Navigation --- */
   nav {
     position:fixed; top:0; width:100%;
     background:var(--bg-nav); backdrop-filter:blur(12px);
@@ -49,14 +46,18 @@
     box-shadow:0 2px 10px rgba(0,0,0,0.05);
     border-bottom: 1px solid var(--border);
   }
-  .logo { font-size:1.6rem; font-weight:700; color:var(--primary); }
-  
+  .logo { 
+      font-size:1.6rem; 
+      font-weight:700; 
+      background: linear-gradient(to right, var(--primary), #8e44ad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
   .nav-right { display: flex; align-items: center; gap: 20px; }
   .nav-links { display: flex; gap: 40px; }
   .nav-links a { text-decoration:none; color:var(--text-main); font-weight:500; transition:color 0.3s; font-size: 1.05rem; }
   .nav-links a:hover { color:var(--primary); }
 
-  /* Pulse Availability Badge */
   .nav-status {
     display: flex; align-items: center; gap: 8px;
     padding: 6px 14px; border-radius: 30px;
@@ -66,7 +67,6 @@
     text-decoration: none; transition: 0.3s;
   }
   .nav-status:hover { background: rgba(37, 211, 102, 0.2); transform: translateY(-1px); }
-  
   .status-dot { width: 8px; height: 8px; background: #25d366; border-radius: 50%; position: relative; }
   .status-dot::after {
     content: ''; position: absolute; top: 50%; left: 50%;
@@ -85,11 +85,9 @@
   }
   .theme-toggle:hover { transform: rotate(15deg); color: var(--primary); }
 
-  /* --- Scroll Reveal --- */
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
   .reveal.active { opacity: 1; transform: translateY(0); }
 
-  /* --- Hero Section --- */
   .hero {
     display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
     padding:140px 8% 100px;
@@ -98,10 +96,8 @@
   }
   .hero-content { flex:1 1 450px; max-width:650px; }
   .hero h1 { font-size:3.2rem; line-height:1.2; color:var(--text-main); min-height: 80px; }
-  
   .typewriter-text { color: var(--primary); border-right: 3px solid var(--accent); padding-right: 5px; animation: blink 0.7s infinite; }
   @keyframes blink { 50% { border-color: transparent; } }
-
   .hero p { margin:20px 0; color:var(--text-sec); font-size:1.1rem; line-height:1.7; }
   .cta-btn {
     display:inline-block; background:var(--primary); color:#ffffff;
@@ -110,7 +106,6 @@
   }
   .cta-btn:hover { background:var(--accent); color:#20232a; transform: translateY(-2px); }
 
-  /* --- Marquee --- */
   .tech-marquee {
     background: var(--bg-card); padding: 35px 0; 
     border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -129,7 +124,6 @@
   .tech-item i { margin-right: 12px; color: var(--primary); font-size: 1.8rem; }
   @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-  /* --- About --- */
   .about { padding:100px 8%; display:flex; justify-content:center; background: var(--bg-body); }
   .about-inner { max-width:1100px; width:100%; display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:60px; align-items:center; }
   .about-text h2 { font-size:2.3rem; margin-bottom:18px; color:var(--text-main); }
@@ -148,7 +142,6 @@
   .about-card h3 { color:var(--primary); margin-bottom: 8px; font-size: 1.25rem; }
   .about-card p { color:var(--text-sec); font-size: 0.95rem; }
 
-  /* --- Achievements --- */
   .achievements { display:flex; flex-wrap:wrap; justify-content: center; gap:40px; padding:80px 8%; background:var(--bg-card); }
   .achievements .card {
     background:var(--bg-body); border-radius:15px; width:260px; text-align:center; padding:25px;
@@ -157,64 +150,32 @@
   .achievements h3 { color:var(--primary); font-size:2.5rem; margin-bottom: 5px; } 
   .achievements p { color:var(--text-sec); font-weight: 500; }
 
-  /* --- RESTORED: Grid Layout for Features --- */
-  .features {
-    padding:100px 8%;
-    background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-body) 100%);
-  }
-  .features-header {
-    text-align:center; max-width:640px; margin:0 auto 50px;
-  }
+  .features { padding:100px 8%; background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-body) 100%); }
+  .features-header { text-align:center; max-width:640px; margin:0 auto 50px; }
   .features-header h2 { font-size:2.4rem; margin-bottom:12px; color:var(--text-main); }
   .features-header p { color:var(--text-sec); line-height:1.7; font-size:1rem; }
-  
-  .feature-layout {
-    display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr);
-    gap:28px; align-items:stretch; max-width:1200px; margin:0 auto;
-  }
-  
+  .feature-layout { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr); gap:28px; align-items:stretch; max-width:1200px; margin:0 auto; }
   .feature-main { display:flex; height:100%; }
-  
   .feature-card {
     position:relative; background:var(--bg-card); border-radius:18px; padding:24px 22px;
-    text-align:left; border:1px solid var(--border);
-    box-shadow:var(--shadow);
+    text-align:left; border:1px solid var(--border); box-shadow:var(--shadow);
     overflow:hidden; transition:transform 0.25s ease, box-shadow 0.25s ease;
   }
-  
-  /* Large Blue Card Style */
-  .feature-card-main {
-    background:linear-gradient(135deg,#0b5fff 0%,#277dff 30%,#f9fbff 100%);
-    color:#ffffff; padding:28px 26px;
-  }
-  /* Dark mode override for the main card */
-  [data-theme="dark"] .feature-card-main {
-    background: linear-gradient(135deg, #0044b3 0%, #0066ff 100%);
-  }
+  .feature-card-main { background:linear-gradient(135deg,#0b5fff 0%,#277dff 30%,#f9fbff 100%); color:#ffffff; padding:28px 26px; }
+  [data-theme="dark"] .feature-card-main { background: linear-gradient(135deg, #0044b3 0%, #0066ff 100%); }
   .feature-card-main h3, .feature-card-main p { color:#ffffff; }
-  
-  .feature-card:hover {
-    transform:translateY(-6px); box-shadow: 0 16px 40px rgba(9,30,66,0.12);
-  }
-  
+  .feature-card:hover { transform:translateY(-6px); box-shadow: 0 16px 40px rgba(9,30,66,0.12); }
   .feature-badge {
     display:inline-flex; align-items:center; justify-content:center;
     width:32px; height:32px; border-radius:999px;
     background:rgba(0,82,204,0.08); color:var(--primary);
     font-size:0.8rem; font-weight:600; margin-bottom:10px;
   }
-  .feature-card-main .feature-badge {
-    background:rgba(255,255,255,0.24); color:#ffffff;
-  }
-  
+  .feature-card-main .feature-badge { background:rgba(255,255,255,0.24); color:#ffffff; }
   .feature-card h3 { margin-bottom:8px; color:var(--primary); font-size:1.1rem; }
   .feature-card p { color:var(--text-sec); line-height:1.7; font-size:0.98rem; }
-  
-  .feature-side-grid {
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;
-  }
+  .feature-side-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
 
-  /* --- Projects --- */
   .projects { padding:100px 8%; background:var(--bg-body); }
   .projects h2 { text-align:center; font-size:2.4rem; margin-bottom:20px; color:var(--text-main); }
   .filter-container { max-width: 600px; margin: 0 auto 50px; text-align: center; }
@@ -246,7 +207,13 @@
   .project-thumb { width:100%; height:220px; object-fit:cover; background:#eee; }
   .project-info { padding:20px 24px; flex-grow: 1; display: flex; flex-direction: column; }
   .project-title { font-size:1.2rem; font-weight:700; color:var(--text-main); margin-bottom:6px; }
-  .project-meta { font-size:0.9rem; color:var(--primary); font-weight: 600; margin-bottom: 15px; }
+  .project-meta { font-size:0.9rem; color:var(--primary); font-weight: 600; margin-bottom: 8px; }
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--text-sec);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
   .book-now-btn {
     margin-top: auto; background: var(--bg-body); color: var(--text-main);
     border: 1px solid var(--border); padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer;
@@ -254,7 +221,6 @@
   }
   .book-now-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-  /* --- FAQ Section --- */
   .faq { padding:100px 8%; background:var(--bg-card); }
   .faq h2 { text-align: center; margin-bottom: 50px; color: var(--text-main); font-size: 2.4rem; }
   .faq-container { max-width: 800px; margin: 0 auto; }
@@ -273,7 +239,6 @@
   .faq-icon { transition: transform 0.3s; font-size: 0.9rem; }
   .faq-question.active .faq-icon { transform: rotate(180deg); color: var(--primary); }
 
-  /* --- Skeleton --- */
   @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
   .skeleton {
     background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
@@ -284,7 +249,7 @@
   .sk-text { height: 20px; margin: 15px; width: 60%; border-radius: 4px; }
   .sk-btn { height: 40px; margin: 15px; width: calc(100% - 30px); border-radius: 6px; margin-top: auto; }
 
-  /* --- Modal --- */
+  /* --- MODAL UPDATES FOR MOBILE --- */
   .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.7); z-index: 2000;
@@ -292,12 +257,15 @@
     opacity: 0; pointer-events: none; transition: opacity 0.3s ease; backdrop-filter: blur(8px);
   }
   .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  
   .modal-content {
-    background: var(--bg-card); width: 90%; max-width: 900px; max-height: 90vh;
+    background: var(--bg-card); width: 90%; max-width: 900px; 
+    max-height: 85vh; /* FIXED HEIGHT FOR MOBILE SCROLL */
     border-radius: 24px; overflow: hidden; position: relative;
     box-shadow: 0 25px 50px rgba(0,0,0,0.3);
     transform: scale(0.95) translateY(20px); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     display: grid; grid-template-columns: 1.2fr 1fr;
+    overflow-y: auto; /* ALLOW SCROLL */
   }
   .modal-overlay.open .modal-content { transform: scale(1) translateY(0); }
   .modal-image-wrapper { 
@@ -305,7 +273,9 @@
     display: flex; align-items: center; justify-content: center;
   }
   .modal-image { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; }
-  .modal-details { padding: 40px; display: flex; flex-direction: column; overflow-y: auto;}
+  
+  .modal-details { padding: 40px; display: flex; flex-direction: column; } /* REMOVED overflow here to let parent scroll */
+  
   .modal-close {
     position: absolute; top: 15px; right: 20px; width: 35px; height: 35px;
     background: rgba(0,0,0,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;
@@ -318,11 +288,16 @@
     margin-bottom: 15px; width: fit-content; text-transform: uppercase; letter-spacing: 0.5px;
   }
   .modal-title { font-size: 2.2rem; color: var(--text-main); margin-bottom: 15px; line-height: 1.2; }
-  .modal-desc { color: var(--text-sec); line-height: 1.8; margin-bottom: 25px; font-size: 1.05rem; }
-  .modal-tech-stack { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+  .modal-desc { color: var(--text-sec); line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+  .modal-tech-stack { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
   .tech-tag {
     font-size: 0.85rem; background: var(--bg-body); color: var(--text-sec);
     padding: 8px 15px; border-radius: 8px; border: 1px solid var(--border); font-weight: 500;
+  }
+  .modal-meta {
+    font-size: 0.9rem;
+    color: var(--text-sec);
+    margin-bottom: 30px;
   }
   .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: auto; }
   .btn-modal {
@@ -334,9 +309,8 @@
   .btn-book { background: var(--primary); color: #fff; border: none; box-shadow: 0 4px 15px rgba(0,82,204,0.3); }
   .btn-book:hover { background: var(--accent); color: #20232a; transform: translateY(-2px); }
 
-  /* --- WhatsApp Float --- */
   .whatsapp-float {
-    position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
+    position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px;
     background-color: #25d366; color: #FFF; border-radius: 50px;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
     z-index: 100; display: flex; align-items: center; justify-content: center;
@@ -346,26 +320,22 @@
   .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
 
   @media (max-width: 900px) {
+    .logo { font-size: 1.25rem; } /* FIX FOR LOGO OVERFLOW */
     .modal-content { grid-template-columns: 1fr; }
     .modal-image-wrapper { height: 250px; }
     .about-inner { grid-template-columns: 1fr; gap: 40px;}
     .nav-links { display: none; }
     .nav-right { gap: 10px; }
     .nav-status span { display: none; }
-    /* Mobile Grid fix */
     .feature-layout { grid-template-columns: 1fr; }
     .feature-main { order: -1; margin-bottom: 20px; }
   }
   
-  footer {
-    background:var(--bg-card); text-align:center; padding:30px;
-    color:var(--text-sec); border-top:1px solid var(--border);
-  }
+  footer { background:var(--bg-card); text-align:center; padding:30px; color:var(--text-sec); border-top:1px solid var(--border); }
 </style>
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav id="navbar">
     <div class="logo">TechWebnology</div>
     <div class="nav-right">
@@ -384,7 +354,6 @@
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="hero reveal">
     <div class="hero-content">
       <h1>Your Future Runs on <br><span class="highlight typewriter-text" id="typewriter"></span></h1>
@@ -393,7 +362,6 @@
     </div>
   </section>
 
-  <!-- Marquee -->
   <div class="tech-marquee">
     <div class="marquee-content">
       <span class="tech-item"><i class="fab fa-react"></i> React</span>
@@ -403,7 +371,6 @@
       <span class="tech-item"><i class="fab fa-html5"></i> HTML5</span>
       <span class="tech-item"><i class="fab fa-css3-alt"></i> CSS3</span>
       <span class="tech-item"><i class="fas fa-database"></i> MongoDB</span>
-      <!-- Duplicate -->
       <span class="tech-item"><i class="fab fa-react"></i> React</span>
       <span class="tech-item"><i class="fab fa-node-js"></i> Node.js</span>
       <span class="tech-item"><i class="fas fa-fire"></i> Firebase</span>
@@ -414,7 +381,6 @@
     </div>
   </div>
 
-  <!-- About -->
   <section class="about">
     <div class="about-inner">
       <div class="about-text reveal">
@@ -438,7 +404,6 @@
     </div>
   </section>
 
-  <!-- Achievements -->
   <section class="achievements reveal">
     <div class="card">
       <h3 class="counter" data-target="20">0</h3><p>Web Templates</p>
@@ -451,7 +416,6 @@
     </div>
   </section>
 
-  <!-- RESTORED: Grid Features Section -->
   <section class="features">
     <div class="features-header reveal">
       <span class="section-tag">Our Superpowers</span>
@@ -486,7 +450,6 @@
     </div>
   </section>
 
-  <!-- Projects -->
   <section class="projects reveal" id="projects">
     <h2>Latest Creations</h2>
     <div class="filter-container">
@@ -505,7 +468,6 @@
     <div class="project-list" id="templateList"></div>
   </section>
 
-  <!-- FAQ -->
   <section class="faq reveal">
     <div class="faq-container">
       <h2>Frequently Asked Questions</h2>
@@ -536,7 +498,6 @@
     </div>
   </section>
 
-  <!-- Modal -->
   <div class="modal-overlay" id="projectModal">
     <div class="modal-content">
       <div class="modal-close" onclick="closeModal()">&times;</div>
@@ -547,9 +508,8 @@
         <span class="modal-badge" id="mId">TEMPLATE #001</span>
         <h2 class="modal-title" id="mTitle">Project Title</h2>
         <p class="modal-desc" id="mDesc">Description goes here...</p>
-        <div class="modal-tech-stack">
-          <span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag">JavaScript</span>
-        </div>
+        <div class="modal-tech-stack" id="mTechStack"></div>
+        <p class="modal-meta" id="mMeta"></p>
         <div class="modal-actions">
           <a href="#" target="_blank" class="btn-modal btn-demo" id="mDemoBtn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
           <button class="btn-modal btn-book" id="mBookBtn"><i class="fas fa-calendar-check"></i> Book Now</button>
@@ -558,7 +518,7 @@
     </div>
   </div>
 
-  <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://wa.me/919736344277" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
   <footer>
     © 2025 TechWebnology · Built by Deepak &amp; Uday · Innovation starts with curiosity
@@ -577,7 +537,6 @@
       appId: "1:670428390942:web:e474cc3d1a47322efab00f",
       measurementId: "G-4126WXPLC1"
     };
-
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
@@ -585,97 +544,70 @@
     const searchInput = document.getElementById("searchInput");
     const pills = document.querySelectorAll('.pill');
     const modal = document.getElementById('projectModal');
-    
     let allProjects = [];
     let currentCategory = 'all';
     let currentSearch = '';
 
-    // --- Typewriter Effect ---
     const words = ["TechWebnology", "Innovation", "Code", "Creativity"];
-    let i = 0;
-    let timer;
-
+    let i = 0; let timer;
     function typingEffect() {
       const word = words[i].split("");
-      var loopTyping = function() {
-        if (word.length > 0) {
-          document.getElementById('typewriter').innerHTML += word.shift();
-        } else {
-          setTimeout(deletingEffect, 2000); 
-          return false;
-        }
+      const loopTyping = function() {
+        if (word.length > 0) { document.getElementById('typewriter').innerHTML += word.shift(); } 
+        else { setTimeout(deletingEffect, 2000); return; }
         timer = setTimeout(loopTyping, 150);
       };
       loopTyping();
     }
-
     function deletingEffect() {
       const word = words[i].split("");
-      var loopDeleting = function() {
-        if (word.length > 0) {
-          word.pop();
-          document.getElementById('typewriter').innerHTML = word.join("");
-        } else {
-          if (words.length > (i + 1)) { i++; } else { i = 0; }
-          typingEffect();
-          return false;
-        }
+      const loopDeleting = function() {
+        if (word.length > 0) { word.pop(); document.getElementById('typewriter').innerHTML = word.join(""); } 
+        else { if (words.length > (i + 1)) { i++; } else { i = 0; } typingEffect(); return; }
         timer = setTimeout(loopDeleting, 100);
       };
       loopDeleting();
     }
     typingEffect(); 
 
-    // --- Animated Counters ---
     const counters = document.querySelectorAll('.counter');
     const animateCounters = () => {
       counters.forEach(counter => {
         const target = +counter.getAttribute('data-target');
         const count = +counter.innerText;
         const inc = target / 100;
-        if (count < target) {
-          counter.innerText = Math.ceil(count + inc);
-          setTimeout(animateCounters, 20); 
-        } else {
-          counter.innerText = target + "+";
-        }
+        if (count < target) { counter.innerText = Math.ceil(count + inc); setTimeout(animateCounters, 20); } 
+        else { counter.innerText = target + "+"; }
       });
-    }
+    };
     let counterSection = document.querySelector('.achievements');
     let started = false;
     window.addEventListener('scroll', () => {
-      if (window.scrollY > counterSection.offsetTop - 400 && !started) {
-        animateCounters();
-        started = true;
-      }
+      if (window.scrollY > counterSection.offsetTop - 400 && !started) { animateCounters(); started = true; }
     });
 
-    // --- FAQ Accordion ---
     const faqs = document.querySelectorAll(".faq-question");
     faqs.forEach(faq => {
       faq.addEventListener("click", () => {
         faq.classList.toggle("active");
         const answer = faq.nextElementSibling;
-        if (faq.classList.contains("active")) {
+        if (faq.classList.contains("active")) { 
           answer.style.maxHeight = answer.scrollHeight + 20 + "px"; 
-          answer.style.paddingBottom = "20px";
-        } else {
-          answer.style.maxHeight = 0;
-          answer.style.paddingBottom = "0";
+          answer.style.paddingBottom = "20px"; 
+        } else { 
+          answer.style.maxHeight = 0; 
+          answer.style.paddingBottom = "0"; 
         }
       });
     });
 
-    // --- Scroll Reveal ---
     const revealElements = () => {
       const reveals = document.querySelectorAll('.reveal');
       const windowHeight = window.innerHeight;
       const elementVisible = 100;
       reveals.forEach((reveal) => {
         const elementTop = reveal.getBoundingClientRect().top;
-        if (elementTop < windowHeight - elementVisible) {
-          reveal.classList.add('active');
-        }
+        if (elementTop < windowHeight - elementVisible) { reveal.classList.add('active'); }
       });
     };
     window.addEventListener('scroll', revealElements);
@@ -683,107 +615,124 @@
 
     function showSkeletons() {
       let html = '';
-      for(let i=0; i<6; i++) {
-        html += `<div class="sk-card"><div class="skeleton sk-img"></div><div class="skeleton sk-text"></div><div class="skeleton sk-btn"></div></div>`;
+      for(let i=0; i<6; i++) { 
+        html += `<div class="sk-card">
+          <div class="skeleton sk-img"></div>
+          <div class="skeleton sk-text"></div>
+          <div class="skeleton sk-btn"></div>
+        </div>`; 
       }
       templateList.innerHTML = html;
     }
     showSkeletons();
 
-    // --- Theme Logic ---
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = themeToggle.querySelector('i');
-    
     const savedTheme = localStorage.getItem('theme');
-    if(savedTheme === 'dark') {
-      document.body.setAttribute('data-theme', 'dark');
-      themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun');
+    if(savedTheme === 'dark') { 
+      document.body.setAttribute('data-theme', 'dark'); 
+      themeIcon.classList.remove('fa-moon'); 
+      themeIcon.classList.add('fa-sun'); 
     }
-
     themeToggle.addEventListener('click', () => {
-      if(document.body.hasAttribute('data-theme')) {
-        document.body.removeAttribute('data-theme');
+      if(document.body.hasAttribute('data-theme')) { 
+        document.body.removeAttribute('data-theme'); 
         localStorage.setItem('theme', 'light'); 
-        themeIcon.classList.remove('fa-sun'); themeIcon.classList.add('fa-moon');
-      } else {
-        document.body.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun');
+        themeIcon.classList.remove('fa-sun'); 
+        themeIcon.classList.add('fa-moon'); 
+      } else { 
+        document.body.setAttribute('data-theme', 'dark'); 
+        localStorage.setItem('theme', 'dark'); 
+        themeIcon.classList.remove('fa-moon'); 
+        themeIcon.classList.add('fa-sun'); 
       }
     });
 
     const renderProjects = () => {
       const filtered = allProjects.filter(p => {
-        const matchesSearch = (p.name || "").toLowerCase().includes(currentSearch) || 
-                              (p.templateNo || "").toString().includes(currentSearch);
-        const matchesCategory = currentCategory === 'all' || 
-                                (p.category && p.category.toLowerCase() === currentCategory.toLowerCase());
+        const haystack = `${p.name || ""} ${p.templateNo || ""} ${p.description || ""} ${p.languageUsed || ""} ${p.category || ""}`.toLowerCase();
+        const matchesSearch = haystack.includes(currentSearch);
+        const matchesCategory = currentCategory === 'all' || (p.category && p.category.toLowerCase() === currentCategory.toLowerCase());
         return matchesSearch && matchesCategory;
       });
-
-      if (filtered.length === 0) {
-        templateList.innerHTML = "<p style='text-align:center;color:var(--text-sec);grid-column:1/-1;padding:20px;'>No matching projects found.</p>";
-        return;
+      if (filtered.length === 0) { 
+        templateList.innerHTML = "<p style='text-align:center;color:var(--text-sec);grid-column:1/-1;padding:20px;'>No matching projects found.</p>"; 
+        return; 
       }
-
       templateList.innerHTML = filtered.map((t, index) => {
         const safeName = t.name || "Untitled Project";
         const tmplNo = t.templateNo || "N/A";
         const safeImage = t.imageUrl || "https://via.placeholder.com/400x300?text=No+Preview";
-        
-        return `
-          <div class="project-card reveal active" data-index="${index}">
-            <img src="${safeImage}" class="project-thumb" alt="${safeName}" loading="lazy">
-            <div class="project-info">
-              <div class="project-title">${safeName}</div>
-              <div class="project-meta">ID: ${tmplNo}</div>
-              <button class="book-now-btn">View Details</button>
-            </div>
+        const desc = (t.description || "").length > 90 ? (t.description.substring(0, 87) + "...") : (t.description || "");
+        return `<div class="project-card reveal active" data-index="${index}">
+          <img src="${safeImage}" class="project-thumb" alt="${safeName}" loading="lazy">
+          <div class="project-info">
+            <div class="project-title">${safeName}</div>
+            <div class="project-meta">TEMPLATE #${tmplNo}</div>
+            <div class="project-desc">${desc}</div>
+            <button class="book-now-btn" onclick="openModal('${t.id}')">View Details</button>
           </div>
-        `;
+        </div>`;
       }).join("");
-
-      document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => {
-          const idx = card.getAttribute('data-index');
-          openModal(filtered[idx]);
-        });
-      });
     };
 
-    window.openModal = (data) => {
-      document.getElementById('mImage').src = data.imageUrl || "https://via.placeholder.com/600x400";
-      document.getElementById('mTitle').innerText = data.name || "Untitled";
-      document.getElementById('mId').innerText = `TEMPLATE #${data.templateNo || '???'}`;
-      document.getElementById('mDesc').innerText = data.description || "A high-quality, responsive web template built for performance.";
-      document.getElementById('mDemoBtn').href = data.link || "#";
-      document.getElementById('mBookBtn').onclick = () => {
-        window.location.href = `contact.html?subject=Booking Template ${data.templateNo}`;
+    window.openModal = (id) => {
+      const project = allProjects.find(p => p.id === id);
+      if(!project) return;
+      document.getElementById('mImage').src = project.imageUrl || "";
+      document.getElementById('mId').textContent = "TEMPLATE #" + (project.templateNo || "00");
+      document.getElementById('mTitle').textContent = project.name || "Untitled";
+      document.getElementById('mDesc').textContent = project.description || "No description available.";
+      document.getElementById('mMeta').textContent = project.category ? `Category: ${project.category}` : "";
+      
+      const tags = (project.languageUsed || "").split(',').map(tag => tag.trim()).filter(tag => tag);
+      document.getElementById('mTechStack').innerHTML = tags.length 
+        ? tags.map(t => `<span class="tech-tag">${t}</span>`).join('') 
+        : "";
+
+      const demoBtn = document.getElementById('mDemoBtn');
+      if (project.link) {
+        demoBtn.href = project.link;
+        demoBtn.style.display = "inline-block";
+      } else {
+        demoBtn.style.display = "none";
+      }
+
+      const bookBtn = document.getElementById('mBookBtn');
+      bookBtn.onclick = () => {
+        const msg = `Hi, I am interested in Template #${project.templateNo} (${project.name}).`;
+        window.open(`https://wa.me/919736344277?text=${encodeURIComponent(msg)}`, '_blank');
       };
+
       modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
     };
 
     window.closeModal = () => {
       modal.classList.remove('open');
-      document.body.style.overflow = 'auto';
     };
-    modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
 
-    searchInput.addEventListener("input", (e) => { currentSearch = e.target.value.toLowerCase(); renderProjects(); });
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value.toLowerCase();
+      renderProjects();
+    });
+
     pills.forEach(pill => {
       pill.addEventListener('click', () => {
-        pills.forEach(p => p.classList.remove('active')); pill.classList.add('active');
-        currentCategory = pill.getAttribute('data-cat'); renderProjects();
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        currentCategory = pill.getAttribute('data-cat');
+        renderProjects();
       });
     });
 
-    const templatesRef = collection(db, "templates");
-    const templatesQuery = query(templatesRef, orderBy("createdAt", "desc"));
-    onSnapshot(templatesQuery, (snapshot) => {
-      allProjects = snapshot.docs.map(doc => doc.data());
+    const q = query(collection(db, "templates"), orderBy("createdAt", "desc"));
+    onSnapshot(q, (snapshot) => {
+      allProjects = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       renderProjects();
-    }, (error) => console.error(error));
+    });
   </script>
 </body>
 </html>
