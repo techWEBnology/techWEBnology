@@ -249,7 +249,7 @@
   .sk-text { height: 20px; margin: 15px; width: 60%; border-radius: 4px; }
   .sk-btn { height: 40px; margin: 15px; width: calc(100% - 30px); border-radius: 6px; margin-top: auto; }
 
-  /* --- MODAL UPDATES FOR MOBILE --- */
+  /* --- MODAL --- */
   .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.7); z-index: 2000;
@@ -260,12 +260,12 @@
   
   .modal-content {
     background: var(--bg-card); width: 90%; max-width: 900px; 
-    max-height: 85vh; /* FIXED HEIGHT FOR MOBILE SCROLL */
+    max-height: 85vh;
     border-radius: 24px; overflow: hidden; position: relative;
     box-shadow: 0 25px 50px rgba(0,0,0,0.3);
     transform: scale(0.95) translateY(20px); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     display: grid; grid-template-columns: 1.2fr 1fr;
-    overflow-y: auto; /* ALLOW SCROLL */
+    overflow-y: auto;
   }
   .modal-overlay.open .modal-content { transform: scale(1) translateY(0); }
   .modal-image-wrapper { 
@@ -274,7 +274,7 @@
   }
   .modal-image { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; }
   
-  .modal-details { padding: 40px; display: flex; flex-direction: column; } /* REMOVED overflow here to let parent scroll */
+  .modal-details { padding: 40px; display: flex; flex-direction: column; }
   
   .modal-close {
     position: absolute; top: 15px; right: 20px; width: 35px; height: 35px;
@@ -320,15 +320,18 @@
   .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
 
   @media (max-width: 900px) {
-    .logo { font-size: 1.25rem; } /* FIX FOR LOGO OVERFLOW */
+    .logo { font-size: 1.25rem; }
     .modal-content { grid-template-columns: 1fr; }
     .modal-image-wrapper { height: 250px; }
     .about-inner { grid-template-columns: 1fr; gap: 40px;}
-    .nav-links { display: none; }
-    .nav-right { gap: 10px; }
+    .nav-right { gap: 12px; }
+    /* keep links visible but tighter on phones */
+    .nav-links { display:flex; gap:16px; }
+    .nav-links a { font-size:0.9rem; }
     .nav-status span { display: none; }
     .feature-layout { grid-template-columns: 1fr; }
     .feature-main { order: -1; margin-bottom: 20px; }
+    .hero { padding-top:110px; }
   }
   
   footer { background:var(--bg-card); text-align:center; padding:30px; color:var(--text-sec); border-top:1px solid var(--border); }
@@ -463,6 +466,7 @@
         <div class="pill" data-cat="Portfolio">Portfolio</div>
         <div class="pill" data-cat="Business">Business</div>
         <div class="pill" data-cat="Tools">Tools</div>
+        <div class="pill" data-cat="Landing Page">Landing Page</div>
       </div>
     </div>
     <div class="project-list" id="templateList"></div>
